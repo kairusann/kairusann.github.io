@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="http://mbostock.github.io/d3/talk/20111018/d3/d3.js"></script>
+    <script type="text/javascript" src="http://mbostock.github.io/d3/talk/20111018/d3/d3.layout.js"></script>
+    <script type="text/javascript" src="tableau.js"></script>
+    <script type="text/javascript" src="http://public.tableau.com/javascripts/api/tableau_v8.debug.js"></script>
+    <style type="text/css">
+	body {
+		/* background-image: url(../texture-noise.png); */
+		background-color: #000000;
+	}
+
+	#chart, #header, #footer {
+		position: absolute;
+		top: 0;
+	}
+
+	#header, #footer {
+		z-index: 1;
+		display: block;
+		font-size: 36px;
+		font-weight: 300;
+		text-shadow: 0 1px 0 #fff;
+	}
+
+	#header.inverted, #footer.inverted {
+		color: #fff;
+		text-shadow: 0 1px 4px #000;
+	}
+
+	#header {
+		top: 80px;
+		left: 140px;
+		width: 1000px;
+	}
+
+	#footer {
+		top: 680px;
+		right: 140px;
+		text-align: right;
+	}
+
+	rect {
+		fill: none;
+		pointer-events: all;
+	}
+
+	pre {
+		font-size: 18px;
+	}
+
+	line {
+		stroke: #000;
+		stroke-width: 1.5px;
+	}
+
+	.string, .regexp {
+		color: #f39;
+	}
+
+	.keyword {
+		color: #00c;
+	}
+
+	.comment {
+		color: #777;
+		font-style: oblique;
+	}
+
+	.number {
+		color: #369;
+	}
+
+	.class, .special {
+		color: #1181B8;
+	}
+
+	a:link, a:visited {
+		color: #000;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #666;
+	}
+
+	.hint {
+		position: absolute;
+		right: 0;
+		width: 1280px;
+		font-size: 12px;
+		color: #999;
+	}
+#title {
+	font-family: open-sans;
+	font-style: normal;
+	font-weight: 600;
+	background-color: #222;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	margin-bottom: 0px;
+	font-size: 24px;
+	color: #FFFFFF;
+}
+#title .header {
+	font-size: 24px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	display: block;
+
+}
+
+.node circle {
+  cursor: pointer;
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+/*.node text {
+  font-size: 11px;
+  cursor:pointer;
+  fill:black;
+}*/
+
+.selected {
+    fill: red;
+}
+
+/*.root text{
+	font-size:16px;
+}*/
+
+path.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1px;
+}
+
+#main{
+	width: 1000px;
+	height: 675px;
+	background-color: #FFFFFF;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#d3viz{
+	width: 680px;
+	height: 600px;
+	float: left;
+	margin: 0;
+	z-index: 999;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#intro{
+	display: block;
+	position: absolute;
+	width: 275px;
+	float: left;
+	margin-top: 100px;
+	margin-left: 373px;
+	font-size: medium;
+	color: #000000;
+	font-family: open-sans;
+	font-style: normal;
+	font-weight: 300;
+}
+
+#tableau{
+	width: 320px;
+	height: 800px;
+	float: left;
+	margin: 0;
+	display: block;
+}
+
+#logo {
+	margin-top: 45px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1000px;
+}
+    </style>
+
+	<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+  <script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/open-sans:n3,n6:default.js" type="text/javascript"></script>
+</head>
+  <body>
+  <div id="logo">
+    <a href='http://interworks.com'><img src="logo.png" width="195" height="42" alt=""/></a>
+    </div>
+    <div id="title"><span class="header"> D3+Tableau Demo - Federal Budget Dashboard</span></div>
+  <div id="main">
+    	<div id="d3viz">
+        </div>
+        <div id="tableau">      <!--https://public.tableausoftware.com/views/FederalSpending_0/2014?:embed=y&:display_count=no-->
+        </div>
+                <div id="intro">
+                  <h2>D3+Tableau Demo</h2>
+                  <p> This dashboard integrates a custom visualization using <strong>D3.js</strong> (left) with a <strong>Tableau </strong>workbook (right). </p>
+                  <p>Select a name in the tree to navigate. </p>
+                </div>
+    </div>
+  <script type="text/javascript">
+
+var m = [20, 120, 20, 50],
+    w = 680 - m[1] - m[3],
+    h = 600 - m[0] - m[2],
+    i = 0,
+    root;
+	
+var selected = null;
+var colored = null;
+var firstClick = true; //to get around double-firing on first Tableau click
+
+var tree = d3.layout.tree()
+    .size([h, w]);
+
+var diagonal = d3.svg.diagonal()
+    .projection(function(d) { return [d.y, d.x]; });
+
+var dvis = d3.select("#d3viz").append("svg:svg")
+    .attr("width", w + m[1] + m[3])
+    .attr("height", h + m[0] + m[2])
+  .append("svg:g")
+    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+d3.json("fedSpendTest.txt", function(json) {
+  root = json;
+  root.x0 = h / 2;
+  root.y0 = 0;
+
+  function toggleAll(d) {
+    if (d.children) {
+      d.children.forEach(toggleAll);
+      toggle(d);
+    }
+  }
+
+  // Initialize the display to show a few nodes.
+  root.children.forEach(toggleAll);
+  selected = root.name[0];
+  colored = selected;
+  toggle(selected);
+  update(root);
+  
+  //test filter
+  tabfilter();
+});
+
+//listen for Tableau selections
+//viz.addEventListener('marksselection', selectFunc);
+
+function update(source) {
+  var duration = d3.event && d3.event.altKey ? 5000 : 500;
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse();
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { 
+  	if (d.depth==0){ 
+		d.y = 20; 
+	}
+	else if (d.depth==1){
+		d.y = 260;
+	}
+	else {
+		d.y = 350;
+	}
+	});
+
+  // Update the nodes¡­
+  var node = dvis.selectAll("g.node")
+      .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("svg:g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+      .on("click", function(d) {
+		  //on first click, hide explainer div
+		  document.getElementById("intro").style.display = "none";
+
+		  //expand if clicked node is not root & not selected
+		  //todo: set filter on parents where one bureau exists in multiple agencies
+		  if(d.depth==1 && d!=selected){ 
+			toggle(selected);
+			toggle(d); 
+			update(d); 
+			tabfilter(d); 
+		  } else {
+		  	tabfilter(d);
+			colored=d;
+			update(d);
+		  }
+		});
+
+  nodeEnter.append("svg:circle")
+      .attr("r", 1e-6)
+      .style("fill", function (d){ 
+	  		if (d==colored){
+				return "red";
+			}else if(d._children){return "lightsteelblue"; 
+			}else{return "#fff";}
+			});
+	  
+  nodeEnter.append("svg:text")
+      .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	  .attr("font-size",function(d) { return d.depth==0?"14px":"11px"})
+	  .attr("cursor","pointer")
+      .text(function(d) { 
+	  	if (d.depth==0){
+	  		return "Federal"; 
+		}
+		else{
+			return splitName(d);
+		}
+	  })
+      .style("fill-opacity", 1e-6);
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+      .attr("r", 4.5)
+      .style("fill", function (d){ 
+	  		if (d==colored){
+				return "red";
+			}else if(d._children){return "lightsteelblue"; 
+			}else{return "#fff";}
+			});
+	  
+  nodeUpdate.select("text")
+      .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+      .remove();
+
+  nodeExit.select("circle")
+      .attr("r", 1e-6);
+
+  nodeExit.select("text")
+      .style("fill-opacity", 1e-6);
+
+  // Update the links¡­
+  var link = dvis.selectAll("path.link")
+      .data(tree.links(nodes), function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("svg:path", "g")
+      .attr("class", "link")
+      .attr("d", function(d) {
+        var o = {x: source.x0, y: source.y0};
+        return diagonal({source: o, target: o});
+      })
+    .transition()
+      .duration(duration)
+      .attr("d", diagonal);
+
+  // Transition links to their new position.
+  link.transition()
+      .duration(duration)
+      .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+      .duration(duration)
+      .attr("d", function(d) {
+        var o = {x: source.x, y: source.y};
+        return diagonal({source: o, target: o});
+      })
+      .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+    d.x0 = d.x;
+    d.y0 = d.y;
+  });
+//console.log("updated");
+}
+
+
+// Toggle children.
+function toggle(d) {
+  //selected = (d.depth!=2) ? d : selected;
+  //d.select(this).attr("fill")="red"
+  selected = d;
+  colored = selected;
+  if (d.children) {
+    d._children = d.children;
+    d.children = null;
+  } else {
+    d.children = d._children;
+    d._children = null;
+  }
+  //console.log(selected);
+}
+
+//filter Tableau viz
+function tabfilter(d) {
+  if (d.depth==0){
+	clearFilter('Agency');
+	clearFilter('Bureau');
+	setParameter('Division','Federal');
+  }else if(d.depth==1){
+  	clearFilter('Bureau');
+	setParameter('Division','Agency');
+	showOnly('Agency',d.name);
+  } else {
+	setParameter('Division','Bureau');
+	showOnly('Bureau',d.name);
+  }
+}
+
+function splitName(d) {
+    var str = d.name;
+	var res = str;
+    if (d.depth==2 && str.length>50) {
+		res = str.substring(0,50)+"..."
+	}
+    return res;
+}
+function colorSelected (d) {
+	  		if (d==selected){
+				return "lightsteelblue";
+			}else if(d._children){return "#ccc"; 
+			}else{return "#fff";}
+}
+
+//handle Tableau selection: filter/select D3 based on marks clicked
+//function selectFunc (marks){
+//
+//	//on first click, hide explainer div
+//	document.getElementById("intro").style.display = "none";
+//
+//	//get selected marks from Tableau
+//	//this is using explicit array indexes for the bar chart, need to make it referecne field names
+//	//maybe add conditional test to make sure the bar chart is selected not other items.
+//	var tabselected = marks[0].getPairs()[1].formattedValue
+//
+//	//todo: this doesn't work at sub-levels, only agency level
+//	//breaks when anything other than the bars are clicked
+//	var d3data = root.children
+//	.filter(function(d, i) { 
+//		return (d.name==tabselected);
+//		})
+//	;
+//	console.log(d3data);
+//
+//	if (d3data[0]!=selected) {
+//		  toggle(selected);
+//		  colored=d3data[0];
+//		  toggle(d3data[0]); 
+//		  update(d3data[0]);  
+//		  //tabfilter(d3data[0]);
+//		} else {
+//		  colored=d3data[0];
+//		  update(d3data[0]);
+//		  //tabfilter(d3data[0]);
+//		}
+//}
+
+
+    </script>
+  </body>
+</html>
