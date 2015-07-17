@@ -1,213 +1,40 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <script type="text/javascript" src="http://mbostock.github.io/d3/talk/20111018/d3/d3.js"></script>
-    <script type="text/javascript" src="http://mbostock.github.io/d3/talk/20111018/d3/d3.layout.js"></script>
-    <script type="text/javascript" src="tableau.js"></script>
-    <script type="text/javascript" src="http://public.tableau.com/javascripts/api/tableau_v8.debug.js"></script>
-    <style type="text/css">
-	body {
-		/* background-image: url(../texture-noise.png); */
-		background-color: #000000;
-	}
-
-	#chart, #header, #footer {
-		position: absolute;
-		top: 0;
-	}
-
-	#header, #footer {
-		z-index: 1;
-		display: block;
-		font-size: 36px;
-		font-weight: 300;
-		text-shadow: 0 1px 0 #fff;
-	}
-
-	#header.inverted, #footer.inverted {
-		color: #fff;
-		text-shadow: 0 1px 4px #000;
-	}
-
-	#header {
-		top: 80px;
-		left: 140px;
-		width: 1000px;
-	}
-
-	#footer {
-		top: 680px;
-		right: 140px;
-		text-align: right;
-	}
-
-	rect {
-		fill: none;
-		pointer-events: all;
-	}
-
-	pre {
-		font-size: 18px;
-	}
-
-	line {
-		stroke: #000;
-		stroke-width: 1.5px;
-	}
-
-	.string, .regexp {
-		color: #f39;
-	}
-
-	.keyword {
-		color: #00c;
-	}
-
-	.comment {
-		color: #777;
-		font-style: oblique;
-	}
-
-	.number {
-		color: #369;
-	}
-
-	.class, .special {
-		color: #1181B8;
-	}
-
-	a:link, a:visited {
-		color: #000;
-		text-decoration: none;
-	}
-
-	a:hover {
-		color: #666;
-	}
-
-	.hint {
-		position: absolute;
-		right: 0;
-		width: 1280px;
-		font-size: 12px;
-		color: #999;
-	}
-#title {
-	font-family: open-sans;
-	font-style: normal;
-	font-weight: 600;
-	background-color: #222;
-	width: 1000px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 30px;
-	margin-bottom: 0px;
-	font-size: 24px;
-	color: #FFFFFF;
-}
-#title .header {
-	font-size: 24px;
-	padding-top: 5px;
-	padding-right: 5px;
-	padding-left: 10px;
-	padding-bottom: 5px;
-	display: block;
-
-}
-
-.node circle {
-  cursor: pointer;
-  fill: #fff;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
-/*.node text {
-  font-size: 11px;
-  cursor:pointer;
-  fill:black;
-}*/
-
-.selected {
-    fill: red;
-}
-
-/*.root text{
-	font-size:16px;
-}*/
-
-path.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 1px;
-}
-
-#main{
-	width: 1000px;
-	height: 675px;
-	background-color: #FFFFFF;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#d3viz{
-	width: 680px;
-	height: 600px;
-	float: left;
-	margin: 0;
-	z-index: 999;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-#intro{
-	display: block;
-	position: absolute;
-	width: 275px;
-	float: left;
-	margin-top: 100px;
-	margin-left: 373px;
-	font-size: medium;
-	color: #000000;
-	font-family: open-sans;
-	font-style: normal;
-	font-weight: 300;
-}
-
-#tableau{
-	width: 320px;
-	height: 800px;
-	float: left;
-	margin: 0;
-	display: block;
-}
-
-#logo {
-	margin-top: 45px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 1000px;
-}
-    </style>
-
+    <script type="text/javascript" src="js/d3.js"></script>
+    <script type="text/javascript" src="js/d3.layout.js"></script>
+    <script type="text/javascript" src="js/tableau.js"></script>
+    <script type="text/javascript" src="js/tableau_v8.debug.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.colorbox.js"></script>
+    <link rel="stylesheet" href="css/colorbox.css" />
+    <link rel="stylesheet" href="css/style.css" />
 	<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
   <script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/open-sans:n3,n6:default.js" type="text/javascript"></script>
+  <script>
+    $(document).ready(function(){
+      $(".inline").colorbox({inline:true, width:"80%"});
+    });
+  </script>
 </head>
   <body>
-    <div id="title"><span class="header"> D3+Tableau Demo - Federal Budget Dashboard</span></div>
+    <div id="title"><span class="header"> D3+Tableau Demo - Federal Budget Dashboard</span>
+	</div>
+	<button class="inline" href="#main" type="button">Show</button>
+<div style="display:none">
   <div id="main">
     	<div id="d3viz">
         </div>
-        <div id="tableau">      <!--https://public.tableausoftware.com/views/FederalSpending_0/2014?:embed=y&:display_count=no-->
+        <div id="tableau">
         </div>
                 <div id="intro">
                   <h2>D3+Tableau Demo</h2>
                   <p> This dashboard integrates a custom visualization using <strong>D3.js</strong> (left) with a <strong>Tableau </strong>workbook (right). </p>
                   <p>Select a name in the tree to navigate. </p>
                 </div>
-    </div>
+  </div>
+</div>
   <script type="text/javascript">
 
 var m = [20, 120, 20, 50],
@@ -441,40 +268,6 @@ function colorSelected (d) {
 			}else if(d._children){return "#ccc"; 
 			}else{return "#fff";}
 }
-
-//handle Tableau selection: filter/select D3 based on marks clicked
-//function selectFunc (marks){
-//
-//	//on first click, hide explainer div
-//	document.getElementById("intro").style.display = "none";
-//
-//	//get selected marks from Tableau
-//	//this is using explicit array indexes for the bar chart, need to make it referecne field names
-//	//maybe add conditional test to make sure the bar chart is selected not other items.
-//	var tabselected = marks[0].getPairs()[1].formattedValue
-//
-//	//todo: this doesn't work at sub-levels, only agency level
-//	//breaks when anything other than the bars are clicked
-//	var d3data = root.children
-//	.filter(function(d, i) { 
-//		return (d.name==tabselected);
-//		})
-//	;
-//	console.log(d3data);
-//
-//	if (d3data[0]!=selected) {
-//		  toggle(selected);
-//		  colored=d3data[0];
-//		  toggle(d3data[0]); 
-//		  update(d3data[0]);  
-//		  //tabfilter(d3data[0]);
-//		} else {
-//		  colored=d3data[0];
-//		  update(d3data[0]);
-//		  //tabfilter(d3data[0]);
-//		}
-//}
-
 
     </script>
   </body>
