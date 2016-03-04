@@ -2,7 +2,7 @@
 layout: post
 title:  "Analyzing data series"
 date:   2015-06-10 21:50:05
-categories: air pollution
+categories: data
 ---
 Data series = trend + stochastic variations
 

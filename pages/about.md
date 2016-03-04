@@ -6,7 +6,7 @@ permalink: /about/
 
 Summary
 -------
-Kaipeng graduated from Johns Hopkins University with a M.S. degree in Geography and Environmental Engineering. He is gaining knowledge in data analytics and data visualization while working in Crow Insight and pursuing his Masters. Before attending JHU, Kaipeng was a Research Assistant performing environmental statistics and model evaluation in ARC-HKUST. Kaipeng is interested in PhD research opportunity and jobs that utilize GIS, programming, quantitative analysis, modeling and visual analysis in natural science and human health.
+Kaipeng graduated from Johns Hopkins University with a M.S. degree in Geography and Environmental Engineering. He is gaining knowledge in data analytics and data visualization while working in Crow Insight and pursuing his Masters. Before attending JHU, Kaipeng was a Research Assistant performing environmental statistics and model evaluation in ARC-HKUST. Kaipeng is interested in PhD research opportunity and jobs that utilize GIS, programming, quantitative analysis, modeling and visual analysis.
 
 Education
 ---------
@@ -18,7 +18,7 @@ Education
 2007/9 -- 2011/6
 :   **BSc, Environmental Science**; Hong Kong Baptist University
 
-    *Thesis: Ground Water Remediation*
+    *Thesis: Removal of PAHs in Aquatic Environment*
 
 Experience
 ----------

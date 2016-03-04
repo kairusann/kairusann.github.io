@@ -10,9 +10,8 @@ categories: statistics
 Linear regression example: This is a very simple example of using two scipy tools for linear regression, polyfit and stats.linregress.  
 The first step will always be loading required libraries and creating sample data.
 
-In [12]
 
-{% highlight python %}
+```python
 from scipy import linspace, polyval, polyfit, sqrt, stats, randn
 from pylab import plot, title, show , legend
 %matplotlib inline
@@ -20,7 +19,7 @@ from pylab import plot, title, show , legend
 n = 50 # number of points
 t = linspace(-5,5,n)
 t
-{% endhighlight %}
+```
 
 
 
@@ -40,9 +39,8 @@ t
 
 Using linspace(), 50 data points were created within the interval [-5, 5]. Construct a trend with noise. 
 
-In [14]
 
-{% highlight python %}
+```python
 a=0.8; b=-4 #parameters
 x=polyval([a,b],t)
 xn=x+randn(n) #add some noise
@@ -59,7 +57,7 @@ print('Linear regression using polyfit')
 print('parameters: a=%.2f b=%.2f \nregression: a=%.2f b=%.2f, ms error= %.3f' % (a,b,ar,br,err))
 print('Linear regression using stats.linregress')
 print('parameters: a=%.2f b=%.2f \nregression: a=%.2f b=%.2f, std error= %.3f' % (a,b,a_s,b_s,stderr))
-{% endhighlight %}
+```
 
     Linear regression using polyfit
     parameters: a=0.80 b=-4.00 
@@ -71,16 +69,15 @@ print('parameters: a=%.2f b=%.2f \nregression: a=%.2f b=%.2f, std error= %.3f' %
 
 Not bad! To be clear, let's plot the result.
 
-In [13]
 
-{% highlight python %}
+```python
 #matplotlib ploting
 title('Linear Regression Example')
 plot(t,x,'g.--')
 plot(t,xn,'k.')
 plot(t,xr,'r.-')
 legend(['original','plus noise', 'regression'])
-{% endhighlight %}
+```
 
 
 
@@ -90,16 +87,15 @@ legend(['original','plus noise', 'regression'])
 
 
 
-![png]({{ site.baseurl }}/notebooks/linreg_files/linreg_6_1.png)
+![png]({{ site.url }}/assets/linreg.png)
 
 
 The same result could be obtained using a different packages: stat.linregress()
 
-In [11]
 
-{% highlight python %}
+```python
 
-{% endhighlight %}
+```
 
     Linear regression using stats.linregress
     parameters: a=0.80 b=-4.00 
