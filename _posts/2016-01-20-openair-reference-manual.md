@@ -59,12 +59,14 @@ transpose = TRUE)
 ## 12 2004         hours 0.000000e+00           NA
 ## 13 2004          days           NA 2.000000e+01
 ```
+
 ### calcFno2
 
 ```r
 ## Users should see the full openair manual for examples of how
 ## to use this function.
 ```
+
 ### calcPercentile
 
 ```r
@@ -84,6 +86,7 @@ head(percentiles)
 ## 5 1998-05-01            2             7            25
 ## 6 1998-06-01            1             4            15
 ```
+
 ### calendarPlot
 
 ```r
@@ -93,12 +96,14 @@ cols = "heat")
 ```
 
 ![plot of chunk calendarPlot]({{ site.url }}/assets/calendarPlot-1.png) 
+
 ### conditionalEval
 
 ```r
 ## Users should see the full openair manual for examples of how
 ## to use this function.
 ```
+
 ### conditionalQuantile
 
 ```r
@@ -130,6 +135,7 @@ conditionalQuantile(mydata, obs = "nox", mod = "mod")
 
 ## Not run: conditionalQuantile(mydata, obs = "nox", mod = "mod", type = "season")
 ```
+
 ### corPlot
 
 ```r
@@ -140,6 +146,7 @@ corPlot(mydata)
 ```
 
 ![plot of chunk corPlot]({{ site.url }}/assets/corPlot-1.png) 
+
 ### cutData
 
 ```r
@@ -164,12 +171,14 @@ head(mydata)
 ## 5 Thursday
 ## 6 Thursday
 ```
+
 ### GoogleMapsPlot
 
 ```r
 ## Users should see the full openair manual for examples of how
 ## to use this function.
 ```
+
 ### kernelExceed
 
 ```r
@@ -191,6 +200,7 @@ kernelExceed(mydata, pollutant = "pm10", type = "nox")
 ```
 
 ![plot of chunk kernelExceed]({{ site.url }}/assets/kernelExceed-2.png) 
+
 ### linearRelation
 
 ```r
@@ -207,6 +217,7 @@ linearRelation(mydata, x = "pm10", y = "pm25", rsq.thresh = 0.8)
 ```
 
 ![plot of chunk linearRelation]({{ site.url }}/assets/linearRelation-2.png) 
+
 ### modStats
 
 ```r
@@ -228,6 +239,7 @@ modStats(mydata, mod = "no2", obs = "nox", type = "season")
 ## 1 191.9351 0.7881365 -0.4370783 0.2814608
 ## 4 185.3849 0.8260512 -0.3207156 0.3396422
 ```
+
 ### percentileRose
 
 ```r
@@ -236,6 +248,7 @@ percentileRose(mydata, pollutant = "o3", percentile = c(50, 95), col = "brewer1"
 ```
 
 ![plot of chunk percentileRose]({{ site.url }}/assets/percentileRose-1.png) 
+
 ### polarAnnulus
 
 ```r
@@ -243,6 +256,7 @@ polarAnnulus(mydata, pollutant = "pm10", main = "diurnal variation in pm10 at Ma
 ```
 
 ![plot of chunk polarAnnulus]({{ site.url }}/assets/polarAnnulus-1.png) 
+
 ### polarCluster
 
 ```r
@@ -251,6 +265,7 @@ polarCluster(mydata, pollutant = "nox", n.clusters = 6)
 ```
 
 ![plot of chunk polarCluster]({{ site.url }}/assets/polarCluster-1.png) ![plot of chunk polarCluster]({{ site.url }}/assets/polarCluster-2.png) 
+
 ### polarFreq
 
 ```r
@@ -259,6 +274,7 @@ polarFreq(subset(mydata, format(date, "%Y") %in% c(2000, 2003)), type = "year", 
 ```
 
 ![plot of chunk polarFreq]({{ site.url }}/assets/polarFreq-1.png) 
+
 ### polarPlot
 
 ```r
@@ -267,6 +283,7 @@ polarPlot(mydata, pollutant = "so2", type = "year", main = "polarPlot of so2")
 ```
 
 ![plot of chunk polarPlot]({{ site.url }}/assets/polarPlot-1.png) 
+
 ### pollutionRose
 
 ```r
@@ -282,6 +299,7 @@ pollutionRose(mydata, ws = "ws", wd = "wd", ws2 = "ws2", wd2 = "wd2")
 ```
 
 ![plot of chunk pollutionRose]({{ site.url }}/assets/pollutionRose-1.png) 
+
 ### rollingMean
 
 ```r
@@ -306,6 +324,7 @@ head(mydata)
 ## 5 1.298678 214.6545        NA
 ## 6 3.673257 216.6531        NA
 ```
+
 ### scatterPlot
 
 ```r
@@ -314,6 +333,7 @@ scatterPlot(mydata, x = "nox", y = "no2", type = "year")
 ```
 
 ![plot of chunk scatterPlot]({{ site.url }}/assets/scatterPlot-1.png) 
+
 ### smoothTrend
 
 ```r
@@ -322,6 +342,7 @@ smoothTrend(mydata, pollutant = c("no2", "o3", "pm10", "pm25"), pch = NA)
 ```
 
 ![plot of chunk smoothTrend]({{ site.url }}/assets/smoothTrend-1.png) 
+
 ### summaryPlot
 
 ```r
@@ -337,6 +358,7 @@ summaryPlot(mydata, percentile = 0.95, col.mis = "yellow")
 ```
 
 ![plot of chunk summaryPlot]({{ site.url }}/assets/summaryPlot-1.png) 
+
 ### TaylorDiagram
 
 ```r
@@ -372,6 +394,7 @@ TaylorDiagram(mod.dat, obs = "obs", mod = "mod", group = "model")
 ```
 
 ![plot of chunk TaylorDiagram]({{ site.url }}/assets/TaylorDiagram-1.png) 
+
 ### TheilSen
 
 ```r
@@ -385,6 +408,7 @@ TheilSen(mydata, pollutant = "o3", ylab = "o3 (ppb)", alpha = 0.01)
 ```
 
 ![plot of chunk TheilSen]({{ site.url }}/assets/TheilSen-1.png) 
+
 ### timePlot
 
 ```r
@@ -396,6 +420,7 @@ c("nox", "no2"), lwd = c(1, 2), col = "black")
 ```
 
 ![plot of chunk timePlot]({{ site.url }}/assets/timePlot-1.png) 
+
 ### timeProp
 
 ```r
@@ -408,6 +433,7 @@ timeProp(mydata, pollutant="so2", avg.time="month", proportion="wd")
 ```
 
 ![plot of chunk timeProp]({{ site.url }}/assets/timeProp-1.png) 
+
 ### timeVariation
 
 ```r
@@ -473,6 +499,7 @@ timeVariation(mydata, pollutant = "no2", group = "split.by", difference = TRUE)
 ```r
 ## End(Not run)
 ```
+
 ### trajCluster
 
 ```r
@@ -505,6 +532,7 @@ head(traj)
 ## 5 2009-02-25 04:00:00 2009-03-01 spring (MAM)  97      C1
 ## 6 2009-02-25 05:00:00 2009-03-01 spring (MAM)  97      C1
 ```
+
 ### trajLevel
 
 ```r
@@ -552,6 +580,7 @@ statistic = "pscf", type = "season")
 ```r
 ## End(Not run)
 ```
+
 ### trajPlot
 
 ```r
@@ -596,6 +625,7 @@ group = "day", col = "jet", lwd = 2, key.pos = "right", key.col = 1)
 ## End(Not run)
 # more examples to follow linking with concentration measurements...
 ```
+
 ### trendLevel
 
 ```r
@@ -605,6 +635,7 @@ trendLevel(mydata, pollutant = "nox")
 ```
 
 ![plot of chunk trendLevel]({{ site.url }}/assets/trendLevel-1.png) 
+
 ### windRose
 
 ```r
