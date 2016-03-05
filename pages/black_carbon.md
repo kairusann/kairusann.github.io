@@ -41,7 +41,7 @@ The Geophysical Fluid Dynamic Laboratory (GFDL) CM2.1 is a coupled three-dimensi
 
 shortwave flux down at surface (SWDN\_CLR), temperature (TEMP, T\_SURF, T\_REF), precipitation (PRECIP) and evaporation rate (EVAP) etc. as the main output variables.
 
-Two datasets used in this study were simulated data adopted lateral diffusion coefficient (\(A_{\text{redi}}\)) values of 800 m2/s in the format of CDF. For surface data such as SWDN\_CLR, T\_SURF, T\_REF, PRECIP EVAP, and XXX\_CLD\_AMT (XXX can be low, mid, high and tot) are three-dimensional with monthly values at different latitude and longitude. Table 1 gives all the model output in 4-dimensions: I, J, K and L representing latitude, longitude, height and time respectively.
+Two datasets used in this study were simulated data adopted lateral diffusion coefficient $$ A_{\text{redi}} $$ values of 800 m2/s in the format of CDF. For surface data such as SWDN\_CLR, T\_SURF, T\_REF, PRECIP EVAP, and XXX\_CLD\_AMT (XXX can be low, mid, high and tot) are three-dimensional with monthly values at different latitude and longitude. Table 1 gives all the model output in 4-dimensions: I, J, K and L representing latitude, longitude, height and time respectively.
 
 **Result**
 
