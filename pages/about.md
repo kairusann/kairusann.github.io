@@ -31,7 +31,7 @@ Technology:
 :    - Bootstrap; D3.js; Node.js; Google Analytics API; Tableau JavaScript API; Tableau Desktop
 
 Projects:  
-:    - [EPA National Lakes Assessment](http://nationallakesassessment.epa.gov/)
+:    - [EPA National Lakes Assessment](https://nationallakesassessment.epa.gov/)
 
 **Data Analyst Intern at Johns Hopkins Water Institute**
 :    *2014/6 -- 2015/1*
@@ -77,7 +77,7 @@ STATA Code: <https://github.com/kairusann/envstat/tree/master/scripts/pma2020>
 
 The National Lakes Assessment (NLA) is a statistical survey of the condition of our nation's lakes, ponds, and reservoirs. It is designed to provide information on the extent of lakes that support healthy biological condition and recreation, estimate how widespread major stressors are that impact lake quality, and provide insight into whether lakes nationwide are getting cleaner.
 
-Preview: <http://nationallakesassessment.epa.gov/> (Public Access)
+Preview: <https://nationallakesassessment.epa.gov/> (Public Access)
 
 JS Code: <https://github.com/kairusann/kairusann.github.io/tree/master/example/nla_dashboard_js>
 
