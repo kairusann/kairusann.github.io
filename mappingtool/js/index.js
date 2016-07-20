@@ -195,7 +195,7 @@ function drawDatamap(series){
     fills: { defaultFill: '#F5F5F5' },
     data: dataset,
     geographyConfig: {
-    dataUrl: '/cb_2015_us_state_5m.json',
+    dataUrl: 'cb_2015_us_state_5m.json',
       borderColor: '#DEDEDE',
       highlightBorderWidth: 2,
       // don't change color on mouse hover
