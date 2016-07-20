@@ -1,0 +1,17 @@
+#icon-div {
+  position:relative;
+}
+div.func-icons {
+  font-size:1.2em;
+  position:absolute;
+  top:-0.6em;
+  right:0;
+}
+.func-icons span {
+  cursor:pointer;
+}
+#viz {
+  position:relative;
+  max-width:1200px;
+  height:780px;
+}

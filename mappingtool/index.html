@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <meta charset="UTF-8" />
+    <title>Easy Mapping Tool</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.5/datamaps.all.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script>
+    <!--script src="https://github.com/niklasvh/html2canvas/releases/download/0.5.0-alpha1/html2canvas.js"></script-->
+    <!--script src="https://github.com/niklasvh/html2canvas/releases/download/0.5.0-alpha1/html2canvas.svg.js"></script-->
+    <script src="js/html2canvas.min.js"></script>
+    <script src="js/html2canvas.svg.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <!--img class="img-responsive" src="http://www.csbs.org/design/csbs-logo-2011.png" alt="CSBS" style="display:inline"/-->
+          <div id="icon-div">
+            <div class="func-icons">
+            <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="Help"></span>
+            <span class="glyphicon glyphicon-save-file" aria-hidden="true" title="Get Sample CSV"></span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-3">
+              <h2>Easy Mapping Tool</h2>
+              <!--a href="#" class="btn btn-primary btn-md" id="fileSelect">Choose a CSV to begin mapping:</a-->
+              <div id="fileList">
+                <div class="alert alert-info">Choose a CSV to begin mapping</div>
+              </div>
+              <p>
+                <input type="file" id="fileElem" multiple="multiple" accept=".csv" onchange="handleFiles(this.files)" />
+              </p>
+              <div id="tab"></div>
+              <!--input type="button" value="Google Chart" onclick="drawChart(data2)" /-->
+              <h4>Value Type</h4>
+              <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default active" id="option1">
+              <input type="radio" name="options" checked="checked" />Continous</label> 
+              <label class="btn btn-default" id="option2">
+              <input type="radio" name="options" />Discrete</label></div>
+              
+              <div style="margin:1.5em 0;width:50%">
+              
+              <div id="continuous-scale">
+              <label>Color for min and max</label>
+              <form>
+              <input type="text" class="jscolor" name="StartColor" value="4682b4" />
+              <input type="text" class="jscolor" name="EndColor" value="a52a2a" />
+              </form>
+              </div>
+              <div id="discrete-scale" style="display: none">
+                <div class="form-group">
+                  <label for="sel1">Color Palettes:</label>
+                  <select class="form-control" id="sel1">
+                    <option>category10</option>
+                    <option>category20</option>
+                    <option>category20b</option>
+                    <option>category20c</option>
+                  </select>
+                </div>
+              </div>
+              </div>
+              <div>
+              <button class="btn btn-success btn-md" id="map-button" onclick="drawDatamap(data1)">Map It!</button>
+              <div class="dropdown" id="label-options" style="display: none">
+                <button class="btn btn-info dropdown-toggle" type="button" id="label-options" data-toggle="dropdown">Label It
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="label-options">
+                  <li role="presentation"><a role="menuitem" href="#">State</a></li>
+                  <li role="presentation"><a role="menuitem" href="#">Value</a></li>
+                  <li role="presentation"><a role="menuitem" href="#">State:Value</a></li>
+                  <li role="presentation"><a role="menuitem" href="#">Hide</a></li>
+                </ul>
+              </div>
+              </div>
+              
+            </div>
+            <div class="col-sm-9">
+              <div id="viz"></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+        <div class="row">
+          <div class="col-sm-3">
+            <div id="print_div" class="btn-group btn-group-justified"></div>
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/index.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#option1").on("click", function(){$("#continuous-scale").show();$("#discrete-scale").hide();});
+        $("#option2").on("click", function(){$("#continuous-scale").hide();$("#discrete-scale").show();});
+        $("#map-button").click(function(){$("#label-options").css("display","inline-block");});
+        $("#label-options a").eq(0).on("click",function(e){drawLabels(d3map,"states");e.preventDefault()});
+        $("#label-options a").eq(1).on("click",function(e){drawLabels(d3map,"values");e.preventDefault()});
+        $("#label-options a").eq(2).on("click",function(e){drawLabels(d3map,"all");e.preventDefault()});
+        $("#label-options a").eq(3).on("click",function(e){drawLabels(d3map,"clear");e.preventDefault()});
+        $("#icon-div span").eq(0).click(function(){window.open("/assets/README.pdf")});
+        $("#icon-div span").eq(1).click(function(){window.open("/assets/csbs_districts.csv")});
+      })
+    </script>
+  </body>
+</html>

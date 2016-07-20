@@ -22,6 +22,17 @@ Education
 
 Experience
 ----------
+**Data Analyst at Conference of State Bank Supervisors**
+:    *2014/6 -- 2015/1*
+
+Descriptive statistics and report automation pipeline using Oracle, Pentaho, ggvis, R Markdown, and htmlwidgets (JavaScript) in R; Develop JavaScript-based mapping tools as web service and as MicroStrategy plugins, including geodata processing and transformation in QGIS and GDAL; Web scraping with beautifulsoup, rvest and task scheduler in Windows Server
+
+Technology:  
+:    - R; JavaScript; QGIS; Bootstrap; D3.js; Node.js; Python; Git; 
+
+Project:  
+:    - [CSBS Easy Mapping Tool](../mappingtool)
+
 **Senior Analyst at Crow Insight**
 :    *2015/7 -- Present*
 
@@ -77,7 +88,7 @@ STATA Code: <https://github.com/kairusann/envstat/tree/master/scripts/pma2020>
 
 The National Lakes Assessment (NLA) is a statistical survey of the condition of our nation's lakes, ponds, and reservoirs. It is designed to provide information on the extent of lakes that support healthy biological condition and recreation, estimate how widespread major stressors are that impact lake quality, and provide insight into whether lakes nationwide are getting cleaner.
 
-Preview: <https://nationallakesassessment.epa.gov/> (Public Access)
+Preview: <https://nationallakesassessment.epa.gov/> (Internal Access)
 
 JS Code: <https://github.com/kairusann/kairusann.github.io/tree/master/example/nla_dashboard_js>
 
