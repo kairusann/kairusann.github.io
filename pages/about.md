@@ -63,7 +63,7 @@ Design, developed and management of page content and page templates under Drupal
 Technology:  
     - HTML/CSS/PHP; Google Maps; Leaflet Mapping; Google Analytics; D3.js
 
-**Research Assistant at Atmospheric Research Center, FYTGS, HKUST**
+**Research Analyst at Atmospheric Research Center, FYTGS, HKUST**
 :    *2012/10 -- 2013/7*
 
 Evaluate coupled air quality model (WRF-CAMx) using ground observation data from South China; Conduct geospatial analysis on modeling bias; Study daily, weekly, and monthly variations of PM2.5 and ozone time series; Explore source contribution of PM2.5:
