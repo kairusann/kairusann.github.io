@@ -67,6 +67,7 @@ state, attached_sessions
 FROM dba_datapump_jobs
 ORDER BY 1,2;
 ```
+
 The above query will give the datapump jobs information and it will look like below
 
 OWNER_NAME JOB_NAME            OPERATION JOB_MODE  STATE       ATTACHED
@@ -87,6 +88,7 @@ SELECT o.status, o.object_id, o.object_type,
  WHERE o.owner=j.owner_name AND o.object_name=j.job_name
    AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;
 ```
+
 STATUS   OBJECT_ID OBJECT_TYPE  OWNER.OBJECT
 ——- ———- ———— ————————-
 VALID        85283 TABLE        SCOTT.EXPDP_20051121
