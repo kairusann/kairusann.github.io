@@ -6,14 +6,14 @@ categories: data
 ---
 
 ## For listing data pump file and viewing log file:
-```sql
+```sql  
 SELECT * FROM DBA_DIRECTORIES WHERE DIRECTORY_NAME = 'DATA_PUMP_DIR';
 SELECT * FROM TABLE(RDSADMIN.RDS_FILE_UTIL.LISTDIR('DATA_PUMP_DIR'));
-SELECT TEXT FROM TABLE(RDSADMIN.RDS_FILE_UTIL.READ_TEXT_FILE('ADUMP','DEV2PROD_042017.LOG'));
-```
+SELECT TEXT FROM TABLE(RDSADMIN.RDS_FILE_UTIL.READ_TEXT_FILE('ADUMP','DEV2PROD_042017.LOG'));  
+```  
 
 ## PL/SQL to migrate huge volume of data (Table Mode)
-```sql
+```sql  
 DECLARE
     h1 number;
 begin
@@ -53,20 +53,21 @@ begin
     dbms_datapump.start_job(handle => h1, skip_current => 0, abort_step => 0); 
     dbms_datapump.detach(handle => h1); 
 END;
-/
-```
+/  
+```  
 
 ## Cleaning work after scheduled job completed
 
 1. First we need to identify which jobs are in NOT RUNNING status. For this, we need to use below query (basically we are getting this info from dba_datapump_jobs)
-```sql
+
+```sql  
 SET lines 200
 
 SELECT owner_name, job_name, operation, job_mode,
 state, attached_sessions
 FROM dba_datapump_jobs
 ORDER BY 1,2;
-```
+```  
 
 The above query will give the datapump jobs information and it will look like below
 
@@ -81,13 +82,14 @@ In the above output, you can see state is showing as NOT RUNNING and those jobs 
 Note: Please note that jobs state will be showing as NOT RUNNING even if a user wantedly stopped it. So before taking any action, consult the user and get confirmed
 
 2. we need to now identify the master tables which are created for these jobs. It can be done as follows
-```sql
+
+```sql  
 SELECT o.status, o.object_id, o.object_type,
        o.owner||'.'||object_name "OWNER.OBJECT"
   FROM dba_objects o, dba_datapump_jobs j
  WHERE o.owner=j.owner_name AND o.object_name=j.job_name
-   AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;
-```
+   AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;  
+```  
 
 STATUS   OBJECT_ID OBJECT_TYPE  OWNER.OBJECT
 ——- ———- ———— ————————-
@@ -111,3 +113,6 @@ Some imp points:
 4. But when import datapump job is terminated, complete import might not have done as processes(master & worker)  will be killed.
 
 
+sqlplus "mstr_meta/encYmWGjDRtT6yHe@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=csbs-mstrdma3e.chejgc8ejqix.us-east-1.rds.amazonaws.com)(Port=1521))(CONNECT_DATA=(SID=MSTRDM)))"
+exp mstr_meta/encYmWGjDRtT6yHe@csbs-mstrdma3e.chejgc8ejqix.us-east-1.rds.amazonaws.com:1521/MSTRDM file=C:\Data\MSTR_META_170502.dmp log=C:\Data\MSTR_META_170502.log
+imp mstr_meta/encYmWGjDRtT6yHe@csbs-mstrdma3e.chejgc8ejqix.us-east-1.rds.amazonaws.com:1521/MSTRDM file=C:\Data\CSBSMETA.dmp log=C:\Data\CSBSMETA_170502.log full=y commit=Y
