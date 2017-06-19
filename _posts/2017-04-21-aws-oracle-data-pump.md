@@ -9,7 +9,8 @@ categories: data
 ```sql  
 SELECT * FROM DBA_DIRECTORIES WHERE DIRECTORY_NAME = 'DATA_PUMP_DIR';
 SELECT * FROM TABLE(RDSADMIN.RDS_FILE_UTIL.LISTDIR('DATA_PUMP_DIR'));
-SELECT TEXT FROM TABLE(RDSADMIN.RDS_FILE_UTIL.READ_TEXT_FILE('ADUMP','DEV2PROD_042017.LOG'));  
+SELECT TEXT FROM TABLE(RDSADMIN.RDS_FILE_UTIL.READ_TEXT_FILE('ADUMP','DEV2PROD_042017.LOG'));
+EXEC UTL_FILE.FREMOVE('DATA_PUMP_DIR','DEV2PROD_060717.LOG');  
 ```  
 
 ## PL/SQL to migrate huge volume of data (Table Mode)
@@ -112,7 +113,8 @@ Some imp points:
 3. When we terminate export datapump job, master and worker processes will get killed and it doesn’t lead to data courrption.
 4. But when import datapump job is terminated, complete import might not have done as processes(master & worker)  will be killed.
 
-
-sqlplus "mstr_meta/encYmWGjDRtT6yHe@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=csbs-mstrdma3e.chejgc8ejqix.us-east-1.rds.amazonaws.com)(Port=1521))(CONNECT_DATA=(SID=MSTRDM)))"
-exp mstr_meta/encYmWGjDRtT6yHe@csbs-mstrdma3e.chejgc8ejqix.us-east-1.rds.amazonaws.com:1521/MSTRDM file=C:\Data\MSTR_META_170502.dmp log=C:\Data\MSTR_META_170502.log
-imp mstr_meta/encYmWGjDRtT6yHe@csbs-mstrdma3e.chejgc8ejqix.us-east-1.rds.amazonaws.com:1521/MSTRDM file=C:\Data\CSBSMETA.dmp log=C:\Data\CSBSMETA_170502.log full=y commit=Y
+```bash
+sqlplus "mstr_meta/[anypwd]@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=csbs-mstrdma3e.chejgc8ejqix.us-east-1.rds.amazonaws.com)(Port=1521))(CONNECT_DATA=(SID=MSTRDM)))"
+exp mstr_meta/[anypwd]@csbs-mstrdma3e.chejgc8ejqix.us-east-1.rds.amazonaws.com:1521/MSTRDM file=C:\Data\MSTR_META_170502.dmp log=C:\Data\MSTR_META_170502.log
+imp mstr_meta/[anypwd]@csbs-mstrdma3e.chejgc8ejqix.us-east-1.rds.amazonaws.com:1521/MSTRDM file=C:\Data\CSBSMETA.dmp log=C:\Data\CSBSMETA_170502.log full=y commit=Y
+```
