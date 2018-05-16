@@ -22,19 +22,19 @@ Education
 
 Experience
 ----------
-**Data Analyst at Conference of State Bank Supervisors**
-:    *2014/6 -- 2015/1*
+**Senior Data Analytics Specialist at Conference of State Bank Supervisors**
+:    *2014/6 -- Present*
 
-Descriptive statistics and report automation pipeline using Oracle, Pentaho, ggvis, R Markdown, and htmlwidgets (JavaScript) in R; Develop JavaScript-based mapping tools as web service and as MicroStrategy plugins, including geodata processing and transformation in QGIS and GDAL; Web scraping with beautifulsoup, rvest and task scheduler in Windows Server
+Mining public economic and financial data, analyzing and reporting with statistical learning techniques and business intelligence solution; 
 
 Technology:  
-:    - R; JavaScript; QGIS; Bootstrap; D3.js; Node.js; Python; Git; 
+:    - R; Python; Amazon Web Services; JavaScript; QGIS; D3.js; Node.js; 
 
 Project:  
 :    - [CSBS Easy Mapping Tool](../mappingtool)
 
 **Senior Analyst at Crow Insight**
-:    *2015/7 -- Present*
+:    *2015/7 -- 2016/10*
 
 Develop data visualization product for clients based on JavaScript; Scraping, cleaning and analyzing data using statistics and visual analysis approach; Design and develop user behavioral tracking system with JavaScript APIs:
 
