@@ -2,8 +2,8 @@
 layout: page
 permalink: /visibility_study/
 ---
-An Application of Statistical Learning on Understanding the Effect of Meteorology and Air Pollution to Visibility Reduction in Hong Kong International Airport
------------------------------------------------------------------------------------------------------------
+
+## An Application of Statistical Learning on Understanding the Effect of Meteorology and Air Pollution to Visibility Reduction in Hong Kong International Airport
 
 Kaipeng Zhong
 

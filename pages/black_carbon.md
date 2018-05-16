@@ -3,8 +3,8 @@ layout: page
 permalink: /black_carbon/
 ---
 
-Instant Climate Response to Doubled Black Carbon Emission
----------------------------------------------------------
+## Instant Climate Response to Doubled Black Carbon Emission
+
 
 **Abstract**
 
