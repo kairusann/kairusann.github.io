@@ -72,11 +72,11 @@ ORDER BY 1,2;
 
 The above query will give the datapump jobs information and it will look like below
 
-OWNER_NAME JOB_NAME            OPERATION JOB_MODE  STATE       ATTACHED
-———- ——————- ——— ——— ———– ——–
-SCOTT      SYS_EXPORT_TABLE_01 EXPORT    TABLE     NOT RUNNING        0
-SCOTT      SYS_EXPORT_TABLE_02 EXPORT    TABLE     NOT RUNNING        0
-SYSTEM     SYS_EXPORT_FULL_01  EXPORT    FULL      NOT RUNNING        0
+| OWNER_NAME | JOB_NAME            | OPERATION | JOB_MODE | STATE       | ATTACHED |
+| -------------------------------------------------------------------------------- |
+| SCOTT      | SYS_EXPORT_TABLE_01 | EXPORT    | TABLE    | NOT RUNNING | 0        |
+| SCOTT      | SYS_EXPORT_TABLE_02 | EXPORT    | TABLE    | NOT RUNNING | 0        |
+| SYSTEM     | SYS_EXPORT_FULL_01  | EXPORT    | FULL     | NOT RUNNING | 0        |
 
 In the above output, you can see state is showing as NOT RUNNING and those jobs need to be removed.
 
@@ -92,17 +92,19 @@ SELECT o.status, o.object_id, o.object_type,
    AND j.job_name NOT LIKE 'BIN$%' ORDER BY 4,2;  
 ```  
 
-STATUS   OBJECT_ID OBJECT_TYPE  OWNER.OBJECT
-——- ———- ———— ————————-
-VALID        85283 TABLE        SCOTT.EXPDP_20051121
-VALID        85215 TABLE        SCOTT.SYS_EXPORT_TABLE_02
-VALID        85162 TABLE        SYSTEM.SYS_EXPORT_FULL_01
+| STATUS | OBJECT_ID | OBJECT_TYPE | OWNER.OBJECT              |
+| ------------------------------------------------------------ |
+| VALID  | 85283     | TABLE       | SCOTT.EXPDP_20051121      |
+| VALID  | 85215     | TABLE       | SCOTT.SYS_EXPORT_TABLE_02 |
+| VALID  | 85162     | TABLE       | SYSTEM.SYS_EXPORT_FULL_01 |
 
 3. we need to now drop these master tables in order to cleanup the jobs
 
+```sql  
 SQL> DROP TABLE SYSTEM.SYS_EXPORT_FULL_01;
 SQL> DROP TABLE SCOTT.SYS_EXPORT_TABLE_02 ;
 SQL> DROP TABLE SCOTT.EXPDP_20051121;
+```
 
 4. Re-run the query which is used in step 1 to check if still any jobs are showing up. If so, we need to stop the jobs once again using STOP_JOB parameter in expdp or DBMS_DATAPUMP.STOP_JOB package
 
