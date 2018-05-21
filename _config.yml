@@ -32,6 +32,9 @@ kramdown:
   input: GFM
   hard_wrap: true
 
+titles_from_headings:
+  enabled: false
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
