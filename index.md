@@ -74,4 +74,4 @@ layout: default
   }
 </script>
 
-Credit to [白露(hakuro)](https://codepen.io/hankuro)
+> Credit to [白露(hakuro)](https://codepen.io/hankuro)
