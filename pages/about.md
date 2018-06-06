@@ -4,76 +4,98 @@ title: About
 permalink: /about/
 ---
 
-Summary
--------
-Kaipeng graduated from Johns Hopkins University with a M.S. degree in Geography and Environmental Engineering. He is gaining knowledge in data analytics and data visualization while working in Crow Insight and pursuing his Masters. Before attending JHU, Kaipeng was a Research Assistant performing environmental statistics and model evaluation in ARC-HKUST. Kaipeng is interested in PhD research opportunity and jobs that utilize GIS, programming, quantitative analysis, modeling and visual analysis.
+## SUMMARY  
+I'm a dynamic, results-driven data analyst leveraging solid expertise in business intelligence and data science. Repeated success serving as technical lead and solution architect transforming data from various industries into valuable business insights utilizing BI systems, machine learning and big data technology. 
 
-Education
----------
-2013/9 -- 2014/12
-:   **MS, Geography and Environmental Engineering**; Johns Hopkins University
+* Data Warehouse  
+* Extract, Transform, Load
+* Cartography  
+* Business Intelligence  
+* Data Visualization  
+* Web Development
+* Machine Learning  
+* Image Analysis  
+* Geospatial Analysis  
+* Text Analytics  
+* Research Methods  
+* Computer Simulations  
 
-    *Focus: Earth System Modeling, Data Analytics*
 
-2007/9 -- 2011/6
-:   **BSc, Environmental Science**; Hong Kong Baptist University
-
-    *Thesis: Removal of PAHs in Aquatic Environment*
-
-Experience
-----------
-**Senior Data Analytics Specialist at Conference of State Bank Supervisors**
-:    *2014/6 -- Present*
+## PROFESSIONAL EXPERIENCE  
+Conference of State Bank Supervisors, Washington DC
+**Senior Data Analytics Specialist**, 6/2016 -- Present
 
 Mining public economic and financial data, analyzing and reporting with statistical learning techniques and business intelligence solution; 
 
 Technology:  
-:    - R; Python; Amazon Web Services; JavaScript; QGIS; D3.js; Node.js; 
+    - R; Python; Amazon Web Services; JavaScript; QGIS; D3.js; Node.js;
 
 Project:  
-:    - [CSBS Easy Mapping Tool](../mappingtool)
+    - [Branch Location for Washington State](https://data.csbs.org/resources/wa/branch-location-map/)
+    - [MRB State Licensing Map](https://facts.csbs.org/marijuana-state-law/)
 
-**Senior Analyst at Crow Insight**
-:    *2015/7 -- 2016/10*
+
+Crow Insight LLC, Takoma Park, Maryland
+**Senior Analyst**, 7/2015 -- 10/2016
 
 Develop data visualization product for clients based on JavaScript; Scraping, cleaning and analyzing data using statistics and visual analysis approach; Design and develop user behavioral tracking system with JavaScript APIs:
 
 Technology:
-:    - Bootstrap; D3.js; Node.js; Google Analytics API; Tableau JavaScript API; Tableau Desktop
+    - Bootstrap; D3.js; Node.js; Google Analytics API; Tableau JavaScript API; Tableau Desktop
 
 Projects:  
-:    - [EPA National Lakes Assessment](https://nationallakesassessment.epa.gov/)
+    - [EPA National Lakes Assessment](https://nationallakesassessment.epa.gov/)
 
-**Data Analyst Intern at Johns Hopkins Water Institute**
-:    *2014/6 -- 2015/1*
+Johns Hopkins Water Institute, Baltimore, Maryland
+**Data Analyst Intern**, 6/2014 -- 1/2015
 
 Analysis of survey data with two-way summary tables; Compute environmental health indicators; Regression analysis on various kind of data (binary, categorical); Translate R scripts to Stata do file:
 
 Technology:  
-:    - R Programming; Stata Programming; Logistic Regression; Reproducible Research
+    - Survey analysis; Logistic Regression in R/Stata
 
 Project:  
-:    - [Performance Monitoring and Accountability 2020](http://www.pma2020.org/)
+    - [Performance Monitoring and Accountability 2020](http://www.pma2020.org/)
 
-**Web Assistant at Center for Global Clinical Health Education**
-:    *2014/6 -- 2015/1*
+Center for Global Clinical Health Education, Baltimore, Maryland
+**Web Analyst**, 2014/6 -- 2015/1
 
 Design, developed and management of page content and page templates under Drupal 7; Geocoding and project data entry using Leaflet Map and Google Maps API; Monitor, analyze and visualize pageviews and user behavior in Google Analytics:
 
 Technology:  
     - HTML/CSS/PHP; Google Maps; Leaflet Mapping; Google Analytics; D3.js
 
-**Research Analyst at Atmospheric Research Center, FYTGS, HKUST**
-:    *2012/10 -- 2013/7*
+Hong Kong University of Science and Technology, New Territories, Hong Kong
+**Research Analyst**, 10/2012 -- 7/2013
 
 Evaluate coupled air quality model (WRF-CAMx) using ground observation data from South China; Conduct geospatial analysis on modeling bias; Study daily, weekly, and monthly variations of PM2.5 and ozone time series; Explore source contribution of PM2.5:
 
 Technology:  
-    - Matlab Programming; R Programming; ArcGIS Mapping; Python; PMF
+    - Matlab; R; ArcGIS Mapping; Python; Positive Matrix Factorization
 
-Work Sample
------------
+## EDUCATION AND CREDENTIALS
+**Master of Science in Geography and Environmental Engineering | 2014**
+Johns Hopkins University - Baltimore, Maryland
+*Foci: Earth System Modeling, Data Analytics*
 
+**Bechelor of Science in Environmental Science | 2011**
+Hong Kong Baptist University - Kowloon, Hong Kong
+*Thesis: Removal of PAHs in Aquatic Environment*
+
+#### CERTIFICATION
+MicroStrategy Certified Master Analyst, 99% Passing Score  
+MicroStrategy Certified Master Developer, 100% Passing Score  
+SAS Certified Advanced Programmer for SAS 9, 92% Passing Score  
+
+#### AWARD
+APDU Data Viz Awards Winner - Visualizing the Condition of U.S. Lakes, 2017  
+
+#### TECHNICAL PROFICIENCIES
+Apache Spark • API • Amazon Web Services • Cassandra • ETL • JavaScript • MATLAB
+MicroStrategy • MySQL • Linux • Oracle • Python • Tableau • R • Redshift • SAS • Selenium
+
+
+## WORK SAMPLE
 ***PROFESSIONAL***
 
 *Performance Monitoring and Accountability 2020*
