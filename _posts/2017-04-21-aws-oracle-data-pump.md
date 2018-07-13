@@ -90,16 +90,16 @@ END;
 The query above generates a dump file with the name **SDI_DATA_082217.DMP** and its log **SDI_DATA_082217.LOG**
 
 **Clear Completed Jobs**
-
 1. First we need to identify which jobs are in NOT RUNNING status. For this, we need to use below query (basically we are getting this info from dba_datapump_jobs)  
-```sql  
+
+```sql
 SET lines 200
 
 SELECT owner_name, job_name, operation, job_mode,
 state, attached_sessions
 FROM dba_datapump_jobs
 ORDER BY 1,2;
-```  
+```
 
 The above query will give the datapump jobs information and it will look like below  
 
