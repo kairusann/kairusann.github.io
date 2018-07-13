@@ -164,7 +164,7 @@ ggplot(activity, aes(minutes)) +
 
 
 
-![png]({{ site.url }}/App_Use_Analysis-kzhong_files/App_Use_Analysis-kzhong_5_1.png)
+![png]({{ site.url }}/assets/App_Use_Analysis-kzhong_5_1.png)
 
 
 This is nothing like a normally distributed sample. Based on its shape, there are two probability density functions -- Weibull and Gamma distribution with right parameters (shape, rate and scale). 
@@ -214,7 +214,7 @@ ggplot(activity, aes(sample=minutes)) +
 
 
 
-![png]({{ site.url }}/App_Use_Analysis-kzhong_files/App_Use_Analysis-kzhong_7_3.png)
+![png]({{ site.url }}/assets/App_Use_Analysis-kzhong_7_3.png)
 
 
 PDF is well fitted using gamma PDF with the parameters shown above, especially when x is roughly under 6000. Graphically, I will argue that the two points on the upper right corner are outliers in this sample. The following code block is on outliers removal and exploration of insghts. 
