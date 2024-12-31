@@ -41,12 +41,17 @@ async function generatePassphraseFromURL(url, options = {}) {
   const leetMap = {
     A: "4",
     a: "@",
+    E: "3",
     e: "3",
+    I: "!",
     i: "!",
+    L: "1",
     l: "1",
+    O: "0",
     o: "0",
     S: "$",
     s: "5",
+    T: "7",
     t: "7"
   };
 
@@ -63,14 +68,18 @@ async function generatePassphraseFromURL(url, options = {}) {
   for (let i = 0; i < options.wordCount; i++) {
     let word = randomWord();
     if (options.uppercase) {
-      const random_pos = Math.round(word.length * Math.random());
+      const random_pos = Math.round(Math.random() * word.length);
       word =
         word.slice(0, random_pos) +
         word.charAt(random_pos).toUpperCase() +
         word.slice(random_pos + 1, word.length);
     }
     if (options.leet) {
-      word = toLeet(word);
+      const random_pos = Math.round(Math.random() * word.length);
+      word =
+        word.slice(0, random_pos) +
+        toLeet(word.charAt(random_pos)) +
+        word.slice(random_pos + 1, word.length);
     }
     words.push(word);
   }
