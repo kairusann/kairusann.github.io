@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Passphrase Generator</h1>
+  <label for="wordListURL">Word List URL:</label>
+  <input type="text" id="wordListURL" placeholder="Enter URL of the word list (e.g., wordlist.txt)" />
+
+  <label for="wordCount">Number of Words:</label>
+  <input type="number" id="wordCount" value="4" min="1" />
+
+  <label for="separator">Separator:</label>
+  <input type="text" id="separator" value="-" />
+
+  <label for="leet">1337 Speak:</label>
+  <select id="leet">
+    <option value="false" selected>No</option>
+    <option value="true">Yes</option>
+  </select>
+
+  <label for="uppercase">Capitalize Random Letters:</label>
+  <select id="uppercase">
+    <option value="false" selected>No</option>
+    <option value="true">Yes</option>
+  </select>
+
+  <button id="generateBtn">Generate Passphrase</button>
+
+  <div class="passphrase" id="passphraseOutput"></div>
+</div>
